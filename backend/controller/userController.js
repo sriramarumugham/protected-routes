@@ -67,8 +67,10 @@ const getHomePage = async (req, res) => {
   res.send("home page with logout button");
 };
 const userInfo = async (req, res) => {
+
+  // error to debut castin
   try {
-    let token= req.body;
+    let token = req.body;
     // token = JSON.parse(token);
     console.log(token);
     const user = await User.findById({ token });
@@ -79,7 +81,6 @@ const userInfo = async (req, res) => {
       email: user.email,
       token: token,
     });
-    // res.status(200).json({"data":"user"});
   } catch (err) {
     console.log(err);
     return res.status(400);
